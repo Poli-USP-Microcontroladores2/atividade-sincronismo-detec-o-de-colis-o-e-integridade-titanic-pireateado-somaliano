@@ -11,7 +11,7 @@
 #define MSGQ_MAX_MSGS 10
 
 // Altere o ID para cada placa (1 ou 2)
-#define ID_PLACA 2
+#define ID_PLACA 1
 
 // LEDs
 #define LED_VERDE_NODE DT_ALIAS(led0)

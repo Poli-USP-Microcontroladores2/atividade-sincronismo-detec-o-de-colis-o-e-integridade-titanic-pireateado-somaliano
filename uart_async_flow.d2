@@ -1,32 +1,62 @@
-shape: sequence_diagram
+direction: right
 
-App -> UART_Driver: "uart_callback_set()"
-note over UART_Driver: "Registra o handler de interrupção"
+Placa1: {
+    label: "Placa 1 (ID_PLACA = 1)"
+    style: {
+        fill: "#e3f2fd"
+        stroke: "#1565c0"
+    }
 
-loop "a cada 5 segundos"
-    App -> UART_Driver: "sys_rand32_get() → define número de pacotes"
-    App -> UART_Driver: "uart_tx('Loop n: Packet i')"
+    UART1: {
+        label: "UART TX/RX"
+    }
 
-    alt "UART ocupado"
-        UART_Driver -> k_fifo: "k_fifo_put(tx_buf)"
-        note over k_fifo: "Buffer enfileirado para TX"
-    else "UART livre"
-        UART_Driver -> UART_Hardware: "uart_tx()"
-        note over UART_Hardware: "Transmissão iniciada"
-    end
+    LEDS1: {
+        label: "LED Verde / LED Vermelho"
+    }
 
-    UART_Driver -> UART_Hardware: "alterna RX enable/disable"
-end
+    BTN1: {
+        label: "Botão PTB1\n(GPIO_PULL_UP)"
+    }
+}
 
-note over UART_Hardware: "Interrupções UART geradas"
+Placa2: {
+    label: "Placa 2 (ID_PLACA = 2)"
+    style: {
+        fill: "#fce4ec"
+        stroke: "#ad1457"
+    }
 
-== "Interrupções RX/TX" ==
+    UART2: {
+        label: "UART TX/RX"
+    }
 
-UART_Hardware -> UART_Driver: "UART_TX_DONE"
-note over UART_Driver: "Libera buffer TX e verifica fila"
+    LEDS2: {
+        label: "LED Verde / LED Vermelho"
+    }
 
-UART_Hardware -> UART_Driver: "UART_RX_BUF_REQUEST"
-UART_Driver -> UART_Hardware: "uart_rx_buf_rsp(async_rx_buffer[i])"
+    BTN2: {
+        label: "Botão PTB1\n(GPIO_PULL_UP)"
+    }
+}
 
-UART_Hardware -> UART_Driver: "UART_RX_RDY"
-note over UART_Driver: "LOG_HEXDUMP_INF() com dados recebidos"
+UART1 <-> UART2: {
+    label: "Comunicação UART\nEnvia/Recebe SYNC + mensagens"
+    style.stroke: "#424242"
+}
+
+BTN1 -> Placa1: {
+    label: "Pressiona = PTB1 vai para GND\n(Borda de descida detectada)"
+}
+
+BTN2 -> Placa2: {
+    label: "Pressiona = PTB1 vai para GND\n(Borda de descida detectada)"
+}
+
+LEDS1 -> Placa1: {
+    label: "Verde = Tx\nVermelho = Rx"
+}
+
+LEDS2 -> Placa2: {
+    label: "Verde = Tx\nVermelho = Rx"
+}
