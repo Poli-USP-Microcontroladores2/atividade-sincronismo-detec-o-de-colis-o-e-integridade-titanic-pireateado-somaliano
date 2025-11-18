@@ -1,0 +1,62 @@
+direction: right
+
+Placa1: {
+    label: "Placa 1 (ID_PLACA = 1)"
+    style: {
+        fill: "#e3f2fd"
+        stroke: "#1565c0"
+    }
+
+    UART1: {
+        label: "UART TX/RX"
+    }
+
+    LEDS1: {
+        label: "LED Verde / LED Vermelho"
+    }
+
+    BTN1: {
+        label: "Botão PTB1\n(GPIO_PULL_UP)"
+    }
+}
+
+Placa2: {
+    label: "Placa 2 (ID_PLACA = 2)"
+    style: {
+        fill: "#fce4ec"
+        stroke: "#ad1457"
+    }
+
+    UART2: {
+        label: "UART TX/RX"
+    }
+
+    LEDS2: {
+        label: "LED Verde / LED Vermelho"
+    }
+
+    BTN2: {
+        label: "Botão PTB1\n(GPIO_PULL_UP)"
+    }
+}
+
+UART1 <-> UART2: {
+    label: "Comunicação UART\nEnvia/Recebe SYNC + mensagens"
+    style.stroke: "#424242"
+}
+
+BTN1 -> Placa1: {
+    label: "Pressiona = PTB1 vai para GND\n(Borda de descida detectada)"
+}
+
+BTN2 -> Placa2: {
+    label: "Pressiona = PTB1 vai para GND\n(Borda de descida detectada)"
+}
+
+LEDS1 -> Placa1: {
+    label: "Verde = Tx\nVermelho = Rx"
+}
+
+LEDS2 -> Placa2: {
+    label: "Verde = Tx\nVermelho = Rx"
+}
