@@ -1,0 +1,32 @@
+shape: sequence_diagram
+
+App -> UART_Driver: "uart_callback_set()"
+note over UART_Driver: "Registra o handler de interrupção"
+
+loop "a cada 5 segundos"
+    App -> UART_Driver: "sys_rand32_get() → define número de pacotes"
+    App -> UART_Driver: "uart_tx('Loop n: Packet i')"
+
+    alt "UART ocupado"
+        UART_Driver -> k_fifo: "k_fifo_put(tx_buf)"
+        note over k_fifo: "Buffer enfileirado para TX"
+    else "UART livre"
+        UART_Driver -> UART_Hardware: "uart_tx()"
+        note over UART_Hardware: "Transmissão iniciada"
+    end
+
+    UART_Driver -> UART_Hardware: "alterna RX enable/disable"
+end
+
+note over UART_Hardware: "Interrupções UART geradas"
+
+== "Interrupções RX/TX" ==
+
+UART_Hardware -> UART_Driver: "UART_TX_DONE"
+note over UART_Driver: "Libera buffer TX e verifica fila"
+
+UART_Hardware -> UART_Driver: "UART_RX_BUF_REQUEST"
+UART_Driver -> UART_Hardware: "uart_rx_buf_rsp(async_rx_buffer[i])"
+
+UART_Hardware -> UART_Driver: "UART_RX_RDY"
+note over UART_Driver: "LOG_HEXDUMP_INF() com dados recebidos"
