@@ -22,6 +22,32 @@ _Elabore um diagrama de transição de estados inicial para modelar como as duas
 _Descreva um teste para verificação de correto funcionamento do sistema considerando este requisito de sincronismo por meio de botão, contemplando pré-condição, etapas do teste e pós-condição, de forma similar ao realizado em atividades anteriores (Dica: como não terá o canal de comunicação com o computador, podem utilizar o led da placa para indicar a transmissão e recepção de informações)_.
 A ideia é descrever o teste primeiro antes da implementação, de acordo com o TDD visto na atividade passada.
 
+## Ideia de Teste para Checagem de Funcionamento: 
+
+🧭 3. Teste de defasagem controlada
+
+Objetivo: avaliar se o sistema realmente sincroniza quando estava defasado.
+
+Procedimento:
+
+Ligue apenas a Placa 1 e espere 10 s.
+
+Depois ligue a Placa 2.
+
+Agora, elas estarão fora de fase (os LEDs alternarão em tempos diferentes).
+
+Pressione o botão em qualquer uma das duas.
+
+Observe:
+
+Após o “Sincronizado!”, ambas devem passar a alternar no mesmo ritmo e na mesma fase.
+
+✅ Critério de aprovação:
+Após apertar o botão, a alternância de LEDs fica sincronizada (Tx e Rx sempre opostos).
+
+## Resultado de Teste:
+
+O teste foi um sucesso. Quando o botão foi pressionado, os LEDs voltaram para as cores iniciais, o que indica mudança de estado TX/RX. Assim, mesmo que os códigos comecem dessincronizados, a partir do acionamento do botão, tal adversidade para de ocorrer. Portanto, o código está exercendo corretamente sua função. 
 ### 1.2. Detecção de Colisão
 
 Reflita inicialmente se vocês consideram o sincronismo feito por botão algo perfeito, ou se ele pode falhar.

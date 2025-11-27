@@ -1,0 +1,47 @@
+cmake:
+  application:
+    configuration-dir: 'C:/Users/samub/Documents/PlatformIO/Projects/atividade-comunica-o-2-tinder-pirateado/zephyr'
+    source-dir: 'C:/Users/samub/Documents/PlatformIO/Projects/atividade-comunica-o-2-tinder-pirateado/zephyr'
+  board:
+    name: 'frdm_kl25z'
+    path:
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/boards/nxp/frdm_kl25z'
+    qualifiers: 'mkl25z4'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/bindings'
+    files:
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/boards/nxp/frdm_kl25z/frdm_kl25z.dts'
+     - 'C:/Users/samub/Documents/PlatformIO/Projects/atividade-comunica-o-2-tinder-pirateado/zephyr/frdm_kl25z.overlay'
+    include-dirs:
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/_pio/modules/hal/nxp/dts'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/include'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/include/zephyr'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/common'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/vendor'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/rx'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/x86'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/xtensa'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/sparc'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/riscv'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/posix'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/arm64'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/arm'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts/arc'
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/dts'
+    user-files:
+     - 'C:/Users/samub/Documents/PlatformIO/Projects/atividade-comunica-o-2-tinder-pirateado/zephyr/frdm_kl25z.overlay'
+  kconfig:
+    files:
+     - 'C:/Users/samub/.platformio/packages/framework-zephyr/boards/nxp/frdm_kl25z/frdm_kl25z_defconfig'
+     - 'C:/Users/samub/Documents/PlatformIO/Projects/atividade-comunica-o-2-tinder-pirateado/zephyr/prj.conf'
+    user-files:
+     - 'C:/Users/samub/Documents/PlatformIO/Projects/atividade-comunica-o-2-tinder-pirateado/zephyr/prj.conf'
+  toolchain:
+    name: 'gnuarmemb'
+    path: 'C:/Users/samub/.platformio/packages/toolchain-gccarmnoneeabi@1.80201.181220'
+  zephyr:
+    version: '4.2.0'
+    zephyr-base: 'C:/Users/samub/.platformio/packages/framework-zephyr'
+version: '0.1.0'
